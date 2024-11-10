@@ -23,7 +23,7 @@ class ParkingSpots {
 
     public synchronized void deleteCar(Car car) {
         for (int i = 0; i < slots.size(); i++) {
-            if (slots.get(i) != null && slots.get(i).carNumber == car.carNumber) {
+            if (slots.get(i) != null && slots.get(i).getCarNumber() == car.getCarNumber()) {
                 slots.set(i, null);
                 break;
             }
