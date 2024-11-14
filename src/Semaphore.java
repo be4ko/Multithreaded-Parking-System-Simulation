@@ -22,4 +22,12 @@ class Semaphore {
             notify();
         }
     }
+
+    public synchronized boolean tryAcquire() {
+        if (value > 0) {
+            value--;
+            return true;
+        }
+        return false;
+    }
 }

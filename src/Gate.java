@@ -8,11 +8,15 @@ public class Gate {
         this.gateNumber = gateId;
         this.cars = cars;
     }
-    public void getCars(){
-        for (Car car : cars)
-        {
+
+    public int getGateNumber() {
+        return gateNumber;
+    }
+
+    public void getCars() {
+        for (Car car : cars) {
             System.out.print("Gate number " + gateNumber + " ");
-            System.out.println( "Car ID " + car.getCarNumber());
+            System.out.println("Car ID " + car.getCarNumber());
         }
     }
 }
