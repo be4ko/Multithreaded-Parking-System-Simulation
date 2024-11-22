@@ -20,7 +20,7 @@ public class InputRead {
                 int parkTime = Integer.parseInt(parts[3].split(" ")[1]);
 
                 Gate gate = new Gate(gateId, gateCarsMap.getOrDefault(gateId, new ArrayList<>()));
-                Car car = new Car(carId, gateId - 1, arriveTime, gate, parkingSpots, semaphore);
+                Car car = new Car(carId, arriveTime, parkTime, gate, parkingSpots, semaphore);
 
                 gateCarsMap.putIfAbsent(gateId, new ArrayList<>());
                 gateCarsMap.get(gateId).add(car);
