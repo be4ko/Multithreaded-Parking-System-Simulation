@@ -11,6 +11,7 @@ class Semaphore {
             try {
                 wait();
             } catch (InterruptedException e) {
+                // value++;
                 Thread.currentThread().interrupt();
             }
         }
@@ -19,7 +20,7 @@ class Semaphore {
     public synchronized void V() {
         value++;
         if (value <= 0) {
-            notify();
+            notifyAll();
         }
     }
 
