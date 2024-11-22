@@ -43,7 +43,7 @@ public class Car implements Runnable {
 
             Thread.sleep(parkingDuration * 1000);
             System.out.println("Car " + carNumber + " from Gate " + gate.getGateNumber() + " left after "
-                    + parkingDuration + " units of time.");
+                    + (parkingDuration - arrivalTime) + " units of time.");
 
             synchronized (parkingSpots) {
                 parkingSpots.deleteCar(this);
