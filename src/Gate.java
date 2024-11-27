@@ -4,19 +4,23 @@ public class Gate {
     private int gateNumber;
     private ArrayList<Car> cars;
 
-    public Gate(int gateId, ArrayList<Car> cars) {
+    public Gate(int gateId) {
         this.gateNumber = gateId;
-        this.cars = cars;
+        this.cars = new ArrayList<>();
+
     }
 
     public int getGateNumber() {
         return gateNumber;
     }
 
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+
     public void getCars() {
         for (Car car : cars) {
-            System.out.print("Gate number " + gateNumber + " ");
-            System.out.println("Car ID " + car.getCarNumber());
+            System.out.println("Gate number " + gateNumber + ", Car ID " + car.getCarNumber());
         }
     }
 }
