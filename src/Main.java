@@ -1,19 +1,24 @@
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ParkingSpots parkingSpots = new ParkingSpots();
         Semaphore semaphore = new Semaphore(4);
+        ArrayList<Gate> gates = new ArrayList<>();
 
-        // Read input from the file
-        Map<Integer, ArrayList<Car>> gateCarsMap = InputRead.readInput("Input/input.txt", parkingSpots, semaphore);
-
-        // Start threads for each car
-        for (ArrayList<Car> cars : gateCarsMap.values()) {
-            for (Car car : cars) {
-                new Thread(car).start();
-            }
+        for (int i = 1; i < 4; i++) {
+            Gate gate = new Gate(i);
+            gates.add(gate);
         }
+
+        ArrayList<Car> cars = InputRead.readInput("input.txt", parkingSpots, semaphore, gates);
+
+        for (Car car : cars) {
+            car.start();
+        }
+        for (Car car : cars) {
+            car.join();
+        }
+
     }
 }
