@@ -1,4 +1,4 @@
-public class Car implements Runnable {
+public class Car extends Thread {
     private int carNumber;
     private int arrivalTime;
     private int parkingDuration;
@@ -23,7 +23,6 @@ public class Car implements Runnable {
     @Override
     public void run() {
         try {
-            // Simulate arrival time
             Thread.sleep(arrivalTime * 1000);
             System.out.println(
                     "Car " + carNumber + " from Gate " + gate.getGateNumber() + " arrived at time " + arrivalTime);
