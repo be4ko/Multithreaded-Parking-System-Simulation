@@ -11,7 +11,7 @@ public class Main {
             gates.add(gate);
         }
 
-        ArrayList<Car> cars = InputRead.readInput("input.txt", parkingSpots, semaphore, gates);
+        ArrayList<Car> cars = InputRead.readInput("Input/Input.txt", parkingSpots, semaphore, gates);
 
         for (Car car : cars) {
             car.start();
