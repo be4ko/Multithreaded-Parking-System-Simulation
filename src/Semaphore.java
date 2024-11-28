@@ -11,7 +11,6 @@ class Semaphore {
             try {
                 wait();
             } catch (InterruptedException e) {
-                // value++;
                 Thread.currentThread().interrupt();
             }
         }
