@@ -20,5 +20,13 @@ public class Main {
             car.join();
         }
 
+        int totalCarsServed = gates.get(0).getCarsServed() + gates.get(1).getCarsServed()
+                + gates.get(2).getCarsServed();
+        System.out.println("\nTotal Cars Served: " + totalCarsServed + "\n");
+        System.out.println("Details:\n");
+        System.out.println("- Gate 1 served " + gates.get(0).getCarsServed() + " cars.\n");
+        System.out.println("- Gate 2 served " + gates.get(1).getCarsServed() + " cars.\n");
+        System.out.println("- Gate 3 served " + gates.get(2).getCarsServed() + " cars.\n");
+
     }
 }

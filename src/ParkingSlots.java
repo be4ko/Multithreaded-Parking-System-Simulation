@@ -3,6 +3,7 @@ import java.util.List;
 
 class ParkingSpots {
     List<Car> slots;
+    public int size = 0;
 
     public ParkingSpots() {
         slots = new ArrayList<>(4);
@@ -11,26 +12,28 @@ class ParkingSpots {
         }
     }
 
-    public synchronized boolean addCar(Car car) {
+    public boolean addCar(Car car) {
         for (int i = 0; i < slots.size(); i++) {
             if (slots.get(i) == null) {
                 slots.set(i, car);
+                size++;
                 return true;
             }
         }
         return false;
     }
 
-    public synchronized void deleteCar(Car car) {
+    public void deleteCar(Car car) {
         for (int i = 0; i < slots.size(); i++) {
             if (slots.get(i) != null && slots.get(i).getCarNumber() == car.getCarNumber()) {
                 slots.set(i, null);
+                size--;
                 break;
             }
         }
     }
 
-    public synchronized int getOccupiedSpots() {
+    public int getOccupiedSpots() {
         int count = 0;
         for (Car car : slots) {
             if (car != null) {

@@ -19,15 +19,7 @@ class Semaphore {
     public synchronized void V() {
         value++;
         if (value <= 0) {
-            notifyAll();
+            notify();
         }
-    }
-
-    public synchronized boolean tryAcquire() {
-        if (value > 0) {
-            value--;
-            return true;
-        }
-        return false;
     }
 }

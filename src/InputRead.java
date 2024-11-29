@@ -18,7 +18,7 @@ public class InputRead {
                 int carId = Integer.parseInt(parts[1].split(" ")[1]);
                 int arriveTime = Integer.parseInt(parts[2].split(" ")[1]);
                 int parkTime = Integer.parseInt(parts[3].split(" ")[1]);
-
+                gates.get(gateId - 1).addCar();
                 Car car = new Car(carId, arriveTime, parkTime, gates.get(gateId - 1), parkingSpots, semaphore);
                 cars.add(car);
 

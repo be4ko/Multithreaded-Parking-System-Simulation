@@ -26,29 +26,29 @@ public class Car extends Thread {
             Thread.sleep(arrivalTime * 1000);
             System.out.println(
                     "Car " + carNumber + " from Gate " + gate.getGateNumber() + " arrived at time " + arrivalTime);
-
+            synchronized (parkingSpots) {
+                if (parkingSpots.size == 4) {
+                    System.out
+                            .println(
+                                    "Car " + carNumber + " from Gate " + gate.getGateNumber() + " waiting for a spot.");
+                }
+            }
             semaphore.P();
-            boolean parked = false;
 
             synchronized (parkingSpots) {
-                // Attempt to park
-                parked = parkingSpots.addCar(this);
-                if (parked) {
+
+                if (parkingSpots.addCar(this)) {
                     System.out.println("Car " + carNumber + " from Gate " + gate.getGateNumber()
                             + " parked. (Parking Status: " + parkingSpots.getOccupiedSpots() + " spots occupied)");
-                }
-                // If parking failed (shouldn't happen due to semaphore)
-                if (!parked) {
+                } else {
                     System.out
                             .println(
                                     "Car " + carNumber + " from Gate " + gate.getGateNumber() + " waiting for a spot.");
                 }
             }
 
-            // Simulate parking duration
             Thread.sleep(parkingDuration * 1000);
 
-            // Leave parking
             synchronized (parkingSpots) {
                 parkingSpots.deleteCar(this);
                 System.out.println("Car " + carNumber + " from Gate " + gate.getGateNumber()
@@ -57,7 +57,6 @@ public class Car extends Thread {
 
             }
 
-            // Release semaphore
             semaphore.V();
 
         } catch (InterruptedException e) {
